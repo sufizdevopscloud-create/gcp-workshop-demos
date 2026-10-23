@@ -1,4 +1,4 @@
-# Demo 1 · IaaS vs PaaS: the same tiny web page, run two ways.
+# Demo 2 · IaaS vs PaaS: the same tiny web page, run two ways.
 #
 #   IaaS  a virtual machine: you choose the size and the operating system, and you patch, secure and scale it.
 #   PaaS  Cloud Run: you hand over a container; Google runs, patches and scales everything underneath.

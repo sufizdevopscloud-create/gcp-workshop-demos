@@ -1,4 +1,4 @@
-# Demo 3 · Security: lock down a data bucket in layers.
+# Demo 6 · Security: lock down a data bucket in layers.
 #
 # The story: Noon App stores customer invoices. Who can read them, how are they encrypted, where do secrets live,
 # and how would we know if somebody tried something? Each resource below is one layer of defence.
