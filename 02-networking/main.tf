@@ -1,4 +1,4 @@
-# Demo 3 · Networking: a private network where only the right things can talk.
+# Demo 2 · Networking: a private network where only the right things can talk.
 #
 # The story: Noon App has a web server and a database server. Neither has a public IP address.
 #   - admins reach them through Identity-Aware Proxy (no open SSH port to the internet)

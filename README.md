@@ -1,15 +1,12 @@
 # Live demos for Day 1
 
-The site shows three of these on Day 1 (IaaS vs PaaS, networking, security). `01-cloud-computing` is kept here as a spare: it is no longer on the site, to keep the Cloud computing page short.
-
-Four small Terraform projects, one per topic. Each one is a use case you can apply in about two minutes and destroy straight afterwards.
+Three small Terraform projects, one per topic. Each one is a use case you can apply in a few minutes and destroy straight afterwards.
 
 | Folder | Topic | What you show |
 |---|---|---|
-| `01-cloud-computing` | Cloud computing | A web page that costs nothing while nobody visits (Cloud Run scales to zero) and a bucket that grows on demand |
-| `02-iaas-vs-paas` | GCP services | The same page as a virtual machine (IaaS) and as Cloud Run (PaaS): count who manages what |
-| `03-networking` | Networking | VPC, subnets, firewall rules, private servers, IAP access, Cloud NAT with a fixed address |
-| `04-security` | Security | Least-privilege identity, your own encryption key, a bucket that cannot be public, a secret, audit logs |
+| `01-iaas-vs-paas` | GCP services | The same page as a virtual machine (IaaS) and as Cloud Run (PaaS): count who manages what |
+| `02-networking` | Networking | VPC, subnets, firewall rules, private servers, IAP access, Cloud NAT with a fixed address |
+| `03-security` | Security | Least-privilege identity, your own encryption key, a bucket that cannot be public, a secret, audit logs |
 
 ## Run a demo from scratch
 
@@ -39,7 +36,7 @@ gcloud auth application-default set-quota-project $PROJECT
 
 ```bash
 git clone https://github.com/sufizdevopscloud-create/gcp-workshop-demos.git
-cd gcp-workshop-demos/02-iaas-vs-paas
+cd gcp-workshop-demos/01-iaas-vs-paas
 ls && cat main.tf                              # read the code before you run it
 ```
 
@@ -68,11 +65,11 @@ The demos run in **Mumbai (`asia-south1`, zone `asia-south1-a`)**. The Dammam re
 
 - Everything is small (e2-small machines, scale-to-zero containers, a few kilobytes of storage) and costs cents if destroyed within the hour. Cloud NAT and a reserved IP in demo 3 are charged by the hour while they exist.
 - Always run `terraform destroy` after the demo.
-- Demo 1 is private by default. If your organization allows public access, add `-var allow_public=true` so students can open the page.
+- Cloud Run is private by default in new organizations, so opening its address in a browser shows 403. Demo 1 prints a `curl` command that sends your identity token and proves it works.
 - If you apply the landing zone first, its organization policies (no external IPs, no public access, no default network) will block parts of demos 1 and 2 in projects under that organization. Run these demos in a project outside it, or use the private options shown in the outputs.
 
 ## Check without a cloud account
 
 ```bash
-cd demos/01-cloud-computing && terraform init -backend=false && terraform validate
+cd 01-iaas-vs-paas && terraform init -backend=false && terraform validate
 ```
