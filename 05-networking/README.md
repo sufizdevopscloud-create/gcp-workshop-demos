@@ -35,6 +35,8 @@ Takes about 3 to 4 minutes.
 gcloud compute ssh web-vm --zone asia-south1-a --tunnel-through-iap --project $PROJECT
 ```
 
+`--project` matters: without it gcloud uses whichever project it was last set to and fails with “Required 'compute.instances.get' permission”. `terraform output ssh_to_web_through_iap` prints this exact command with your project filled in.
+
 On the web VM, run the three commands from `terraform output try_from_web_vm`.
 
 ## What to explain

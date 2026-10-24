@@ -36,7 +36,7 @@ Terraform finishes in about 3 to 5 minutes. **The load balancer then takes anoth
 
 1. **Compute Engine > Instance groups > `noon-web-mig`**: two VMs, in different zones, no external IP.
 2. **Network services > Load balancing > `noon-web-url-map`**: the frontend address, the backend service and the health status of each VM.
-3. Refresh the page at `load_balancer_url` or run the loop from `terraform output wait_then_try`: the VM name changes between requests. That is the load balancer at work.
+3. Refresh the page at `load_balancer_url` or run the loop: `eval "$(terraform output -raw try_it)"` (`terraform output try_it` only prints the command). The VM name changes between requests: it is the name of the VM that answered, so you can see the load balancer spreading traffic over the VMs.
 
 ## The moment to remember
 

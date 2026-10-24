@@ -39,7 +39,7 @@ terraform output
 1. **Kubernetes Engine > Clusters > `noon-autopilot`**: an Autopilot cluster, no node pools to manage.
 2. **Kubernetes Engine > Workloads > `hello-app`**: 3 pods running.
 3. **Kubernetes Engine > Services & Ingress > `hello-lb`**: the external address.
-4. Run the loop from `terraform output try_it`: the **Hostname** changes between requests (that is the pod name).
+4. Run the loop: `eval "$(terraform output -raw try_it)"` (`terraform output try_it` only prints the command). The **Hostname** changes between requests: it is the name of the pod that answered, so you can see the load balancer spreading traffic over the 3 pods. If you see only one or two names, run it again with more requests.
 
 From your terminal, connect and look at it the way engineers do:
 

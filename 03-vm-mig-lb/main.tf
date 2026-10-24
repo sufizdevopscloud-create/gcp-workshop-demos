@@ -216,8 +216,12 @@ output "load_balancer_url" {
   value = "http://${google_compute_global_address.lb.address}"
 }
 
-output "wait_then_try" {
-  value = "The load balancer takes 3 to 5 minutes to start answering (502 or a timeout first). Then run: for i in 1 2 3 4 5 6; do curl -s ${google_compute_global_address.lb.address} | grep -o 'noon-web-[a-z0-9-]*'; done"
+output "wait_first" {
+  value = "The load balancer takes 3 to 5 minutes to start answering (a 502 error or a timeout first). That is normal."
+}
+
+output "try_it" {
+  value = "for i in 1 2 3 4 5 6 7 8; do curl -s http://${google_compute_global_address.lb.address} | grep -o 'noon-web-[a-z0-9-]*'; done"
 }
 
 output "see_it_in_the_console" {
