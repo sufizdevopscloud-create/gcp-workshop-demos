@@ -62,6 +62,10 @@ terraform destroy -var project_id=$PROJECT
 
 Per demo, what to open in the console is on the demo's page of the workshop site: https://learn.sufizdevops.com/gcp/computing (demo 1), /gcp/services (demos 2 to 4), /gcp/networking (demo 5) and /gcp/security (demo 6).
 
+## If gcloud says it needs a permission "for projects/SOMETHING-ELSE"
+
+Your terminal is using a different gcloud project from the demo project (for example a work or older project). Run `gcloud config set project $PROJECT` once, or add `--project $PROJECT` to the command. The commands printed by `terraform output` already include it.
+
 ## Region
 
 The demos run in **Mumbai (`asia-south1`, zone `asia-south1-a`)**. The Dammam region (`me-central2`) may not be available to a new or trial billing account, and asking for it then fails with `LOCATION_POLICY_VIOLATED`. To use another region, add `-var region=... -var zone=...`.

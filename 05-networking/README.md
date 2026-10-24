@@ -32,7 +32,7 @@ Takes about 3 to 4 minutes.
 **VPC network**: open `noon-vpc`, then its **Subnets**, **Routes** and **Firewall rules** tabs, and **Network services > Cloud NAT**. Then SSH in without any public address:
 
 ```bash
-gcloud compute ssh web-vm --zone asia-south1-a --tunnel-through-iap
+gcloud compute ssh web-vm --zone asia-south1-a --tunnel-through-iap --project $PROJECT
 ```
 
 On the web VM, run the three commands from `terraform output try_from_web_vm`.

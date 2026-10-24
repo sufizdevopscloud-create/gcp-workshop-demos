@@ -146,8 +146,8 @@ output "service_account" {
 output "try_to_break_it" {
   value = {
     make_it_public  = "gcloud storage buckets add-iam-policy-binding ${google_storage_bucket.invoices.url} --member=allUsers --role=roles/storage.objectViewer    # refused: public access prevention"
-    see_the_key     = "gcloud kms keys describe invoices-key --keyring ${google_kms_key_ring.ring.name} --location ${var.region}"
-    read_the_secret = "gcloud secrets versions access latest --secret noon-db-password    # allowed for you as owner; the app uses its own identity"
-    who_did_what    = "gcloud logging read 'protoPayload.serviceName=\"storage.googleapis.com\"' --limit 5 --format='value(protoPayload.methodName,protoPayload.authenticationInfo.principalEmail)'"
+    see_the_key     = "gcloud kms keys describe invoices-key --keyring ${google_kms_key_ring.ring.name} --location ${var.region} --project ${var.project_id}"
+    read_the_secret = "gcloud secrets versions access latest --secret noon-db-password --project ${var.project_id}    # allowed for you as owner; the app uses its own identity"
+    who_did_what    = "gcloud logging read 'protoPayload.serviceName=\"storage.googleapis.com\"' --limit 5 --project ${var.project_id} --format='value(protoPayload.methodName,protoPayload.authenticationInfo.principalEmail)'"
   }
 }

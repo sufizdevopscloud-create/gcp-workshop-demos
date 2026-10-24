@@ -170,7 +170,7 @@ output "db_private_ip" {
 }
 
 output "ssh_to_web_through_iap" {
-  value = "gcloud compute ssh web-vm --zone ${var.zone} --tunnel-through-iap"
+  value = "gcloud compute ssh web-vm --zone ${var.zone} --tunnel-through-iap --project ${var.project_id}"
 }
 
 output "try_from_web_vm" {
